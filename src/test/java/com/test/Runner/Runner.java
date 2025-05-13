@@ -1,6 +1,10 @@
 package com.test.Runner;
 
 import org.junit.runner.RunWith;
+import org.testng.annotations.AfterSuite;
+
+
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
@@ -9,9 +13,13 @@ import cucumber.api.junit.Cucumber;
     features = "src/test/resources",
     glue = {"com.test.StepDefinition"},
     plugin = {"pretty"},
-    dryRun = false,
-    monochrome = true,
-    strict = true
+    	    dryRun = false,
+    	    monochrome = true,
+    	    strict = true
 )
-public class RunnerTest {
+public class Runner {
+	@AfterSuite
+	public void test() {
+		System.out.println("Sucess");
+	}
 }
