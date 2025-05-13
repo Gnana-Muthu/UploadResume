@@ -15,8 +15,9 @@
    <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 <maven.compiler.source>1.8</maven.compiler.source>
-<maven.compiler.target>1.8</maven.compiler.target>    <cucumber.version>4.8.0</cucumber.version>
-    <maven-jar-plugin.version>3.5.3</maven-jar-plugin.version>
+<maven.compiler.target>1.8</maven.compiler.target>    
+<cucumber.version>4.8.0</cucumber.version>
+    <maven-jar-plugin.version>3.2.5</maven-jar-plugin.version>
    
   </properties>
 
@@ -28,13 +29,12 @@
     <version>4.13.2</version>
     <scope>test</scope>
 </dependency>
-<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter-api</artifactId>
-    <version>5.12.2</version>
-    <scope>test</scope>
-</dependency>
+  <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.0</version>
+        <scope>test</scope>
+    </dependency>
 <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
@@ -163,22 +163,31 @@
 
   </dependencies>
  
- <build>
+<build>
   <plugins>
+    <!-- Maven Compiler Plugin -->
+    <plugin>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.8.0</version>
+      <configuration>
+        <source>1.8</source>
+        <target>1.8</target>
+      </configuration>
+    </plugin>
+
+    <!-- Surefire Plugin (JUnit compatible) -->
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.8.1</version>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>3.2.5</version>
       <configuration>
-        <source>${maven.compiler.source}</source>
-        <target>${maven.compiler.target}</target>
+        <includes>
+          <include>**/Runner.java</include>
+        </includes>
       </configuration>
     </plugin>
   </plugins>
 </build>
-
-
-
 
 </project>
 
