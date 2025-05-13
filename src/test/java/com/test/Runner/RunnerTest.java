@@ -13,6 +13,5 @@ import cucumber.api.junit.Cucumber;
     monochrome = true,
     strict = true
 )
-public class Runner {
-    // No TestNG, No AfterSuite
+public class RunnerTest {
 }
