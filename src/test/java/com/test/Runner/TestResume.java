@@ -1,10 +1,12 @@
 package com.test.Runner;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.test.Uistore.LoginUiStore;
 import com.test.Utilities.PropertyFile;
-import com.test.Uistore.*;
+
 
 public class TestResume extends LoginUiStore{
 	
