@@ -1,13 +1,11 @@
 package com.test.Reusable;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -27,16 +25,14 @@ public class ReusableComponents {
 	PropertyFile rc=new PropertyFile();
 	public String baseURL=rc.getApplicationURL();
 	public static WebDriver driver;
-	public static Logger logger;
+
 	public String br=rc.getBrowser();
 
 
 	@BeforeClass
 	public WebDriver setup() {
 
-		logger=Logger.getLogger("Urban");
-		BasicConfigurator.configure();
-		PropertyConfigurator.configure("Log4j.properties");
+	
 		if(br.equalsIgnoreCase("chrome"))
 		{
 			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
@@ -57,6 +53,7 @@ public class ReusableComponents {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 }
+	/*@AfterMethod
 	@AfterClass
 	public void tearDown() {
 		driver.quit();
@@ -64,9 +61,9 @@ public class ReusableComponents {
 
 	  public void getScreenshot(String result) throws IOException {
 	        File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	        FileUtils.copyFile(src,new File(""));
+	        
 	}
-
+*/
 
 
 

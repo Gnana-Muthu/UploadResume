@@ -1,25 +1,21 @@
-package com.test.Runner;
+package com.test.runner;
 
-import org.junit.runner.RunWith;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterSuite;
 
-
-
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-
-@RunWith(Cucumber.class)
 @CucumberOptions(
     features = "src/test/resources",
     glue = {"com.test.StepDefinition"},
     plugin = {"pretty"},
-    	    dryRun = false,
-    	    monochrome = true,
-    	    strict = true
+    dryRun = false,
+    monochrome = true
+    //tags = "@login"
 )
-public class Runner {
-	@AfterSuite
-	public void test() {
-		System.out.println("Sucess");
-	}
+public class Runner extends AbstractTestNGCucumberTests {
+
+    @AfterSuite
+    public void cleanUp() {
+        // Any cleanup code
+    }
 }

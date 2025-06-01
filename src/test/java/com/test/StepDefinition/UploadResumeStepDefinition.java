@@ -1,22 +1,27 @@
 package com.test.StepDefinition;
 
-import org.apache.log4j.Logger;
+
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.test.Reusable.ReusableComponents;
 import com.test.Uistore.LoginUiStore;
-import com.test.Utilities.LoggerHelper;
+
 import com.test.Utilities.PropertyFile;
 
-import cucumber.api.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
 
 public class UploadResumeStepDefinition extends LoginUiStore {
 	
 	WebDriver driver;
 	ReusableComponents rc=new ReusableComponents();
 	//Logger logger= LoggerHelper.getLogger(LoggerHelper.class);
+	
 	@Given("Hit the Browser Open the URL")
 	public void hit_the_Browser_Open_the_URL() throws InterruptedException {
 PropertyFile rp=new PropertyFile();
