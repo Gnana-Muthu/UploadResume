@@ -2,7 +2,7 @@ name: Daily Scheduled Build
 
 on:
   schedule:
-    - cron: '15 22 * * *'  # Runs at 6:30 PM UTC daily, which is 12:00 AM IST
+    - cron: '30 22 * * *'  # Runs at 6:30 PM UTC daily, which is 12:00 AM IST
   workflow_dispatch:       # Optional: allows manual triggering
 
 jobs:
