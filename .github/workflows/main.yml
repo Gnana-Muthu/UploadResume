@@ -1,0 +1,22 @@
+name: Daily Scheduled Build
+
+on:
+  schedule:
+    - cron: '30 18 * * *'  # Runs at 6:30 PM UTC daily, which is 12:00 AM IST
+  workflow_dispatch:       # Optional: allows manual triggering
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn clean verify
