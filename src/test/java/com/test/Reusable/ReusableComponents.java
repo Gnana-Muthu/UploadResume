@@ -15,7 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
 import com.test.Utilities.PropertyFile;
 
 
@@ -24,9 +24,11 @@ public class ReusableComponents {
 
 	PropertyFile rc=new PropertyFile();
 	public String baseURL=rc.getApplicationURL();
-	 public WebDriver driver;
-	public String br=rc.getBrowser();
 
+	 public WebDriver driver;
+
+	public String br=rc.getBrowser();
+	
 
 	@BeforeClass
 	public WebDriver setup() {
@@ -37,6 +39,7 @@ public class ReusableComponents {
 			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 			WebDriverManager.chromedriver().setup();
 	        driver = new ChromeDriver();
+
 			driver.manage().window().maximize();
 		}
 		else if(br.equalsIgnoreCase("firefox"))
