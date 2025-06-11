@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeClass;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -24,8 +24,7 @@ public class ReusableComponents {
 
 	PropertyFile rc=new PropertyFile();
 	public String baseURL=rc.getApplicationURL();
-	public static WebDriver driver;
-
+	 public WebDriver driver;
 	public String br=rc.getBrowser();
 
 
@@ -36,8 +35,8 @@ public class ReusableComponents {
 		if(br.equalsIgnoreCase("chrome"))
 		{
 			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-			System.setProperty("webdriver.chrome.driver", rc.getChromepath());
-			driver=new ChromeDriver();
+			WebDriverManager.chromedriver().setup();
+	        driver = new ChromeDriver();
 			driver.manage().window().maximize();
 		}
 		else if(br.equalsIgnoreCase("firefox"))
