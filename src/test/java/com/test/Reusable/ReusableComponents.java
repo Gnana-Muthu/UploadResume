@@ -39,6 +39,14 @@ public class ReusableComponents {
 			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 			WebDriverManager.chromedriver().setup();
 	        driver = new ChromeDriver();
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--no-sandbox"); // For CI environments
+options.addArguments("--disable-dev-shm-usage"); // Optional, helps in CI
+options.addArguments("--headless=new"); // Optional, for headless runs
+options.addArguments("--user-data-dir=/tmp/chrome-profile-" + UUID.randomUUID());
+
+WebDriver driver = new ChromeDriver(options);
+
 
 			driver.manage().window().maximize();
 		}
